@@ -2,6 +2,7 @@ package com.opencart.managers;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.safari.SafariDriver;
@@ -14,7 +15,10 @@ public class DriverManager {
     private DriverManager() {
         switch (webDriverType.toUpperCase()) {
             case "CHROME":
-                driver = new ChromeDriver();
+                ChromeOptions options = new ChromeOptions();
+                options.addArguments("ignore-certificate-errors");
+                options.addArguments("--start-maximized");
+                driver = new ChromeDriver(options);
                 System.out.println("The Chrome driver is initiated");
                 break;
             case "FireFox":
@@ -43,6 +47,12 @@ public class DriverManager {
 
     public WebDriver getDriver(){
         return driver;
+    }
+
+    public void tearDown(){
+        driver.close();
+        driver.quit();
+        driver = null;
     }
 
 
