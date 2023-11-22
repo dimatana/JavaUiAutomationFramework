@@ -2,66 +2,82 @@ package com.opencart;
 
 import com.opencart.managers.DriverManager;
 import com.opencart.managers.RandomDataGeneratorManager;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.WindowType;
+import org.openqa.selenium.*;
 
 public class TestRunner {
     public static void main(String[] args) throws InterruptedException {
         WebDriver driver = DriverManager.getInstance().getDriver();
 
         String currentWindowsName = driver.getWindowHandle();
+
+        Thread.sleep(1000);
         // New Window Code
         driver.switchTo().newWindow(WindowType.TAB);
-        driver.get("https://opencart.antropy.co.uk/");
+        driver.get("https://elefant.md/");
 
 
-        WebElement myAccountIcon = driver.findElement(By.xpath("//i[@class='fa fa-user']"));
+        WebElement conectareIcon = driver.findElement(By.xpath("//span[@class='login-prompt js-login-prompt']"));
+        conectareIcon.click();
 
-        myAccountIcon.click();
-
-        WebElement registerOption = driver.findElement(By.xpath("//ul[@class='dropdown-menu dropdown-menu-right']//a[normalize-space()='Register']"));
-
+        WebElement registerOption = driver.findElement(By.xpath("//a[contains(text(),'Creează cont')]"));
+        Thread.sleep(2000);
         registerOption.click();
 
         System.out.println(driver.getCurrentUrl());
 
-        WebElement firstNameInput = driver.findElement(By.id("input-firstname"));
-        String firstname = RandomDataGeneratorManager.generateFirstName();
-        firstNameInput.sendKeys(firstname);
-        System.out.println(firstname);
+        WebElement domnDoamnaOption = driver.findElement(By.xpath("//label[normalize-space()='Dl.']"));
 
-        WebElement lastNameInput = driver.findElement(By.cssSelector("#input-lastname"));
-        String lastName = RandomDataGeneratorManager.generateLastName();
-        lastNameInput.sendKeys(lastName);
-        System.out.println(lastNameInput);
+        domnDoamnaOption.click();
 
-        WebElement emailInput = driver.findElement(By.cssSelector("#input-email"));
+        WebElement prenumeUtilizator = driver.findElement(By.xpath("//input[@id='PostCheckoutRegisterForm_FirstName']"));
+        String lastname = RandomDataGeneratorManager.generateLastName();
+        prenumeUtilizator.sendKeys(lastname);
+        System.out.println(lastname);
+
+        WebElement numeUtilizator = driver.findElement(By.cssSelector("#PostCheckoutRegisterForm_LastName"));
+        String numeUtilizatorRandom = RandomDataGeneratorManager.generateFirstName();
+        numeUtilizator.sendKeys(numeUtilizatorRandom);
+        System.out.println(numeUtilizatorRandom);
+
+        WebElement emailInput = driver.findElement(By.xpath("//input[@id='PostCheckoutRegisterForm_Login']"));
         String randomEmail = RandomDataGeneratorManager.generateRandomEmail();
         emailInput.sendKeys(randomEmail);
         System.out.println(randomEmail);
 
-        WebElement phoneInput = driver.findElement(By.cssSelector("#input-telephone"));
-        phoneInput.sendKeys(RandomDataGeneratorManager.generatePhoneNumber());
 
 
-        WebElement passwordInput = driver.findElement(By.cssSelector("#input-password"));
+     //   WebElement phoneInput = driver.findElement(By.cssSelector("#input-telephone"));
+     //   phoneInput.sendKeys(RandomDataGeneratorManager.generatePhoneNumber());
+
+
+        WebElement passwordInput = driver.findElement(By.xpath("//input[@id='PostCheckoutRegisterForm_Password']"));
         String randomPassword = RandomDataGeneratorManager.generatePassword();
         passwordInput.sendKeys(randomPassword);
         System.out.println(randomPassword);
 
-        WebElement confirmPasswordInput = driver.findElement(By.cssSelector("#input-confirm"));
+        WebElement confirmPasswordInput = driver.findElement(By.cssSelector("#PostCheckoutRegisterForm_RetypedPassword"));
 
 
         confirmPasswordInput.sendKeys(randomPassword);
         System.out.println(randomPassword);
 
-        WebElement privacyPolicyInput = driver.findElement(By.xpath("//input[@name='agree']"));
+
+
+        WebElement privacyPolicyInput = driver.findElement(By.cssSelector("div[class='checkbox'] label small"));
+
+        JavascriptExecutor je = (JavascriptExecutor) driver;
+
+        je.executeScript("arguments[0].scrollIntoView(true);", privacyPolicyInput);
+
+
+      //  je.executeScript("\"window.scrollBy(0, 250)\", \" 250\"");
+
         privacyPolicyInput.click();
 
-        WebElement registerButton = driver.findElement(By.xpath("//input[@value='Continue']"));
+        WebElement registerButton = driver.findElement(By.xpath("//button[contains(text(),'Creează cont')]"));
         registerButton.click();
+
+        Thread.sleep(3000);
 
 
         System.out.println(driver.getTitle());
