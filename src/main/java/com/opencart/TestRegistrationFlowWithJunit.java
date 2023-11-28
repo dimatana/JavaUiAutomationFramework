@@ -19,39 +19,33 @@ public class TestRegistrationFlowWithJunit {
         System.out.println("The execution of the tests has started");
     }
     @BeforeEach
-    public void executeTheCodeBeforeEachTest(){
+    public void executeTheCodeBeforeEachTest() throws InterruptedException {
         System.out.println("The code is executed before each test case");
         driver = DriverManager.getInstance().getDriver();
-        driver.get("https://elefant.md/");
+        driver.get("https://www.elefant.md/");
         homePage = new HomePage(driver);
-        registerPage = new RegisterPage(driver);
         homePage.navigateToRegisterPageFromHeader();
+        registerPage = new RegisterPage(driver);
 
 
     }
 
     @Test
+    @Disabled
+    @Order(1)
     @DisplayName("The registration of a new user with valid data redirects to the account page")
 
     public void registerWithValidCredentialTest() throws InterruptedException {
-        System.out.println("This is the test number 1");
-
         String firstName = RandomDataGeneratorManager.generateLastName();
-        System.out.println(firstName);
-
         String lastName = RandomDataGeneratorManager.generateFirstName();
-        System.out.println(lastName);
-
         String randomEmail = RandomDataGeneratorManager.generateRandomEmail();
-        System.out.println(randomEmail);
-
         String randomPassword = RandomDataGeneratorManager.generatePassword();
+        System.out.println(randomEmail);
         System.out.println(randomPassword);
 
         registerPage.fillInTheRegisterForm(firstName, lastName, randomEmail, randomPassword, randomPassword, true);
-
         registerPage.clickTheContinueBtn();
-
+        Thread.sleep(500);
         String currentUrl = driver.getCurrentUrl();
         boolean doesTheCurrentUrlContainsSuccesAccountRoute = currentUrl.contains("my-account/profile?");
         //      https://www.elefant.md/my-account/profile?Consent=UserRegistration
@@ -59,57 +53,44 @@ public class TestRegistrationFlowWithJunit {
 
     }
     @Test
+    @Order(2)
     @DisplayName("The user is remaining on register page when trying to register with invalid passord")
     public void registerWithInvalidPasswordTest() throws InterruptedException {
         System.out.println("This is the test number 2");
-
         String firstName = RandomDataGeneratorManager.generateLastName();
-        System.out.println(firstName);
-
         String lastName = RandomDataGeneratorManager.generateFirstName();
-        System.out.println(lastName);
-
         String randomEmail = RandomDataGeneratorManager.generateRandomEmail();
         System.out.println(randomEmail);
 
-        registerPage.fillInTheRegisterForm(firstName, lastName, randomEmail, "1", "1", true);
-
+        registerPage.fillInTheRegisterForm(firstName, lastName, randomEmail,"didi", "didi", true);
         registerPage.clickTheContinueBtn();
 
-        Thread.sleep(1500);
+        Thread.sleep(500);
         String actualUrl = driver.getCurrentUrl();
         String expectedUrl = "https://www.elefant.md/new-account?TargetPipeline=ViewProfileSettings-ViewProfile";
 
-        Assertions.assertEquals(expectedUrl, actualUrl, "The Url-s should be equals");
+        Assertions.assertEquals(expectedUrl, actualUrl);
 
 
     }
 
     @Test
+    @Order(3)
     @DisplayName("error Message Is Displayed When Invalid Password Is Used For Register Flow")
     public void errorMessageIsDisplayedWhenInvalidPasswordIsUsedForRegisterFlow() throws InterruptedException {
         System.out.println("This is the test number 3");
-
         String firstName = RandomDataGeneratorManager.generateLastName();
-        System.out.println(firstName);
-
         String lastName = RandomDataGeneratorManager.generateFirstName();
-        System.out.println(lastName);
-
         String randomEmail = RandomDataGeneratorManager.generateRandomEmail();
         System.out.println(randomEmail);
 
-        String randomPassword = RandomDataGeneratorManager.generatePassword();
-        System.out.println(randomPassword);
-
         registerPage.fillInTheRegisterForm(firstName, lastName, randomEmail, "Ag1", "Ag1", true);
-
         registerPage.clickTheContinueBtn();
 
         Thread.sleep(1000);
 
-        String expectedErrorMessageForInvalidPassword = "Parola ta trebuie să conțină cel puțin 6 caractere";
-        String actualErrorMessage = String.valueOf(driver.findElement(By.xpath("//small[contains(text(),'Parola ta trebuie să conțină cel puțin 6 caractere')]")));
+        String expectedErrorMessageForInvalidPassword = "Parola ta trebuie să conțină cel puțin 6 caractere .";
+        String actualErrorMessage = driver.findElement(By.xpath("//small[contains(text(),'Parola ta trebuie să conțină cel puțin 6 caractere')]")).getText();
         Assertions.assertEquals(expectedErrorMessageForInvalidPassword, actualErrorMessage);
 
 

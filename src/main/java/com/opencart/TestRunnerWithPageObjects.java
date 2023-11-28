@@ -10,7 +10,7 @@ public class TestRunnerWithPageObjects {
     public static void main(String[] args) throws InterruptedException {
         WebDriver driver = DriverManager.getInstance().getDriver();
 
-        driver.get("https://elefant.md/");
+        driver.get("https://www.elefant.md/homepage-mikrosite-cms-home");
 
         HomePage homePage = new HomePage(driver);
 
