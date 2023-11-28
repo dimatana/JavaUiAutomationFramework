@@ -12,8 +12,8 @@ public class TestRunner {
 
         Thread.sleep(1000);
         // New Window Code
-        driver.switchTo().newWindow(WindowType.TAB);
-        driver.get("https://elefant.md/");
+    //    driver.switchTo().newWindow(WindowType.TAB);
+        driver.get("https://www.elefant.md/homepage-mikrosite-cms-home");
 
 
         WebElement conectareIcon = driver.findElement(By.xpath("//span[@class='login-prompt js-login-prompt']"));
@@ -77,7 +77,7 @@ public class TestRunner {
         WebElement registerButton = driver.findElement(By.xpath("//button[contains(text(),'Creează cont')]"));
         registerButton.click();
 
-        Thread.sleep(3000);
+        Thread.sleep(5000);
 
 
         System.out.println(driver.getTitle());

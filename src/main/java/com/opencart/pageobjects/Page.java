@@ -7,12 +7,14 @@ import org.openqa.selenium.support.PageFactory;
 
 public abstract class Page {
 
-    public Page(WebDriver driver){
+    public Page(WebDriver driver)
+    {
         PageFactory.initElements(driver, this);
     }
 
     @FindBy(xpath = "//span[@class='login-prompt js-login-prompt']")
     protected WebElement myAccount;
+
 
     @FindBy(xpath = "//a[contains(text(),'Creează cont')]")
     protected WebElement registerBtn;
