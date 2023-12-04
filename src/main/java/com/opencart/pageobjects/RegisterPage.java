@@ -10,6 +10,8 @@ public class RegisterPage extends Page{
         super(driver);
     }
 
+    private String xpath;
+
     @FindBy(xpath = "//label[normalize-space()='Dl.']")
     private WebElement domnDoamnaOption;
 
@@ -46,6 +48,13 @@ public class RegisterPage extends Page{
 
     public void clickTheContinueBtn(){
         conitueBtn.click();
+    }
+
+    public String getXpath(){
+        return xpath;
+    }
+    public void setXpath(final String xpath) {
+        this.xpath = xpath;
     }
 
 }

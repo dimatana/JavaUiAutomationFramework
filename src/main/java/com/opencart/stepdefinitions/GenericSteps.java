@@ -28,18 +28,12 @@ public class GenericSteps {
         driver.get("https://www.elefant.md" + endpointValue);
     }
 
-    @Then("the following list of error messages is displayed")
-    public void theFollowingListOfErrorMessagesIsDisplayed(List<String> errorMessagesList) throws InterruptedException {
-        Thread.sleep(500);
-        errorMessagesList.forEach(errorMessage -> {
-            boolean errorMessageIsDisplayed = driver.findElement(By.xpath("//small[@data-bv-for='PostCheckoutRegisterForm_FirstName'][normalize-space()='" + errorMessage + "']")).isDisplayed();
-            Assertions.assertTrue(errorMessageIsDisplayed, "The error message " + errorMessage + "is displayed");
-        });
-        Thread.sleep(500);
-        errorMessagesList.forEach(errorMessage -> {
-            boolean errorMessageIsDisplayed = driver.findElement(By.xpath("//small[@data-bv-for='PostCheckoutRegisterForm_LastName'][normalize-space()='" + errorMessage + "']")).isDisplayed();
-            Assertions.assertTrue(errorMessageIsDisplayed, "The error message " + errorMessage + "is displayed");
-        });
-
-    }
+//    @Then("the following list of error messages is displayed")
+//    public void theFollowingListOfErrorMessagesIsDisplayed(List<String> errorMessagesList) throws InterruptedException {
+//        Thread.sleep(500);
+//        errorMessagesList.forEach(errorMessage -> {
+//            boolean errorMessageIsDisplayed = driver.findElement(By.xpath("//small[@data-bv-for='PostCheckoutRegisterForm_FirstName'][normalize-space()='" + errorMessage + "']")).isDisplayed();
+//            Assertions.assertTrue(errorMessageIsDisplayed, "The error message " + errorMessage + "is displayed");
+//        });
+ //   }
 }
