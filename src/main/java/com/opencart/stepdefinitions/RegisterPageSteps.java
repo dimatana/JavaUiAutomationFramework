@@ -34,13 +34,6 @@ public class RegisterPageSteps {
         System.out.println("The register form is populated with valid random data");
     }
 
-    @And("Continue button is clicked")
-    public void continueButtonIsClicked() {
-        registerPage.clickTheContinueBtn();
-        System.out.println("The continue button has been clicked");
-    }
-
-
     @When("the register form is populated with the following data:")
     public void theRegisterFormIsPopulatedWithTheFollowingData(Map<String, String> formDataMap) {
         String firstNameValue = formDataMap.get("firstName");
@@ -65,7 +58,7 @@ public class RegisterPageSteps {
 
     @Then("the following list of error messages is displayed")
     public void theFollowingListOfErrorMessagesIsDisplayed(List<String> errorMessagesList) throws InterruptedException {
-        Thread.sleep(500);
+        Thread.sleep(1000);
         errorMessagesList.forEach(errorMessage -> {
             boolean errorMessageIsDisplayed = driver.findElement(By.xpath("//small[@data-bv-for='PostCheckoutRegisterForm_" + registerPage.getXpath() +"'][normalize-space()='" + errorMessage + "']")).isDisplayed();
             Assertions.assertTrue(errorMessageIsDisplayed, "The error message " + errorMessage + "is displayed");
