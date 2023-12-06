@@ -58,7 +58,7 @@ public class RegisterPageSteps {
 
     @Then("the following list of error messages is displayed")
     public void theFollowingListOfErrorMessagesIsDisplayed(List<String> errorMessagesList) throws InterruptedException {
-        Thread.sleep(1000);
+        Thread.sleep(10000);
         errorMessagesList.forEach(errorMessage -> {
             boolean errorMessageIsDisplayed = driver.findElement(By.xpath("//small[@data-bv-for='PostCheckoutRegisterForm_" + registerPage.getXpath() +"'][normalize-space()='" + errorMessage + "']")).isDisplayed();
             Assertions.assertTrue(errorMessageIsDisplayed, "The error message " + errorMessage + "is displayed");

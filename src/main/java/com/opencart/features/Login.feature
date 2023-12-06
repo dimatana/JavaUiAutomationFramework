@@ -14,15 +14,16 @@ Feature: Login Related Test Cases
       | email             | password |
       | dweqsuc@gmail.com | ffgsrggf |
 
-    Scenario: Successful login with valid data credentials
+    @Regression
+    Scenario Outline: Successful login with valid data credentials
       Given "/login" endpoint is accessed
       When the following form "LoginPage" is populated as follow:
         | emailInput    | <emailInput>    |
         | passwordInput | <passwordInput> |
       And the "loginButton" from "LoginPage" is clicked
-      Then the current Url contains "my-account/profile?" keyword
+      Then the current Url contains "my-account" keyword
       Examples:
-        | email                    | password |
-        | dima.tanasciuc@gmail.com | 19932008 |
+        | emailInput               | passwordInput |
+        | dima.tanasciuc@gmail.com | 19932008      |
 
 

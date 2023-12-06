@@ -30,7 +30,7 @@ Feature: Register Flow Test Suite
       Then the following list of error messages is displayed
         | Only alphanumeric characters are allowed. |
       Examples:
-        | impacted attribute | firstName | lastName |  | emailData | passwordData | xpath |
-        |                    | Dima!     | Random   |  | Random    | Random       |       |
-        |                    | Dima      | Tana1!   |  | Random    | Random       |       |
+        | impacted attribute | firstName | lastName |  | emailData   | passwordData | xpath |
+        |                    | Dima!     | Random   |  | RandomEmail | Random       | xpath |
+        |                    | Dima      | Tana1!   |  | Random      | Random       | xpath |
 
