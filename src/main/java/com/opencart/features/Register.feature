@@ -8,7 +8,7 @@ Feature: Register Flow Test Suite
     Scenario: The account Page URL is opened when the registration is successful
       Given "/new-account?TargetPipeline=ViewProfileSettings-ViewProfile" endpoint is accessed
       When the register form is populated with valid random data
-      And Continue button is clicked
+      And the "continueButton" from "RegisterPage" is clicked
       Then the current Url contains "my-account/profile?" keyword
 
   Scenario: user remains on registerPage when the continue button is no clicked
@@ -25,11 +25,12 @@ Feature: Register Flow Test Suite
         | lastName  | <lastName>     |
         | email     | <emailData>    |
         | password  | <passwordData> |
-      When Continue button is clicked
+        | xpath     | <xpath>        |
+      And the "continueButton" from "RegisterPage" is clicked
       Then the following list of error messages is displayed
         | Only alphanumeric characters are allowed. |
       Examples:
-        | impacted attribute | firstName | lastName |  | emailData | passwordData |  |
-        |                    | Dima!     | Random   |  | Random    | Random       |  |
-        |                    | Dima      | Tana1!   |  | Random    | Random       |  |
+        | impacted attribute | firstName | lastName |  | emailData   | passwordData | xpath |
+        |                    | Dima!     | Random   |  | RandomEmail | Random       | xpath |
+        |                    | Dima      | Tana1!   |  | Random      | Random       | xpath |
 
