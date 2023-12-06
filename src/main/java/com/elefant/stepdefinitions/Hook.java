@@ -1,11 +1,10 @@
-package com.opencart.stepdefinitions;
+package com.elefant.stepdefinitions;
 
-import com.opencart.managers.DriverManager;
+import com.elefant.managers.DriverManager;
 import io.cucumber.java.After;
 import io.cucumber.java.AfterAll;
 import io.cucumber.java.Before;
 import io.cucumber.java.BeforeAll;
-import io.cucumber.java.ht.Le;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

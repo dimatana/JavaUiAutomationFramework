@@ -1,7 +1,7 @@
-package com.opencart;
+package com.elefant;
 
-import com.opencart.managers.DriverManager;
-import com.opencart.managers.RandomDataGeneratorManager;
+import com.elefant.managers.DriverManager;
+import com.elefant.managers.RandomDataGeneratorManager;
 import org.openqa.selenium.*;
 
 public class TestRunner {

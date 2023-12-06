@@ -1,6 +1,5 @@
-package com.opencart.managers;
+package com.elefant.managers;
 
-import com.opencart.pageobjects.RegisterPage;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;

@@ -1,8 +1,7 @@
-package com.opencart.stepdefinitions;
+package com.elefant.stepdefinitions;
 
-import com.opencart.managers.DriverManager;
-import com.opencart.pageobjects.HomePage;
-import io.cucumber.java.en.And;
+import com.elefant.managers.DriverManager;
+import com.elefant.pageobjects.HomePage;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 import org.apache.logging.log4j.Level;

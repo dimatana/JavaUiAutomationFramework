@@ -1,6 +1,6 @@
-package com.opencart.pageobjects;
+package com.elefant.pageobjects;
 
-import com.opencart.managers.ScrollManager;
+import com.elefant.managers.ScrollManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
