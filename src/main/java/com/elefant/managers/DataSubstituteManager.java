@@ -1,4 +1,4 @@
-package com.opencart.managers;
+package com.elefant.managers;
 
 public class DataSubstituteManager {
     public static String substituteString(String value) {

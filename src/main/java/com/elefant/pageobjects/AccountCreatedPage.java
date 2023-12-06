@@ -1,7 +1,6 @@
-package com.opencart.pageobjects;
+package com.elefant.pageobjects;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 
 public class AccountCreatedPage extends Page{
 

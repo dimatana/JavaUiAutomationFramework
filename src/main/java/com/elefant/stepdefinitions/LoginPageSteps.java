@@ -1,10 +1,9 @@
-package com.opencart.stepdefinitions;
+package com.elefant.stepdefinitions;
 
-import com.opencart.managers.DriverManager;
-import com.opencart.pageobjects.LoginPage;
+import com.elefant.managers.DriverManager;
+import com.elefant.pageobjects.LoginPage;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.When;
-import org.openqa.selenium.WebDriver;
 
 import java.util.List;
 

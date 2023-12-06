@@ -1,9 +1,9 @@
-package com.opencart;
+package com.elefant;
 
-import com.opencart.managers.DriverManager;
-import com.opencart.managers.RandomDataGeneratorManager;
-import com.opencart.pageobjects.HomePage;
-import com.opencart.pageobjects.RegisterPage;
+import com.elefant.managers.DriverManager;
+import com.elefant.managers.RandomDataGeneratorManager;
+import com.elefant.pageobjects.HomePage;
+import com.elefant.pageobjects.RegisterPage;
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;

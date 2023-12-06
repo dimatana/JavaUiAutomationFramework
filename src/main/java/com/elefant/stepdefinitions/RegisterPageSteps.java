@@ -1,16 +1,14 @@
-package com.opencart.stepdefinitions;
+package com.elefant.stepdefinitions;
 
-import com.opencart.managers.DriverManager;
-import com.opencart.managers.RandomDataGeneratorManager;
-import com.opencart.pageobjects.RegisterPage;
-import io.cucumber.java.en.And;
+import com.elefant.managers.DriverManager;
+import com.elefant.managers.RandomDataGeneratorManager;
+import com.elefant.pageobjects.RegisterPage;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-import javax.xml.xpath.XPath;
 import java.util.List;
 import java.util.Map;
 
